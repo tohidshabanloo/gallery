@@ -1,7 +1,7 @@
 import List from "../List/List";
 import Image from "../Image/Image";
-import {useState} from "react";
-import LoadingIcon from "../LoadingIcon/LoadingIcon"
+import { useState } from "react";
+import LoadingIcon from "../LoadingIcon/LoadingIcon";
 
 /* todo
 1- Fetch List
@@ -12,21 +12,20 @@ import LoadingIcon from "../LoadingIcon/LoadingIcon"
 6- loading
  */
 
+const Gallery = () => {
+  const [image, setImage] = useState();
+  const [loading, setLoading] = useState(false);
+  const clickHandler = (data) => {
+    setImage(data);
+    setLoading(true);
+  };
+  return (
+    <>
+      <List clickHandler={clickHandler} />
+      <Image data={image} setLoading={setLoading} />
+      {loading && <LoadingIcon />}
+    </>
+  );
+};
 
-const Gallery = () =>{
-    const [image,setImage] = useState()
-    const [loading,setLoading] = useState(false)
-    const clickHandler =(data)=>{
-        setImage(data)
-        setLoading(true)
-    }
-    return(
-        <>
-            <List clickHandler={clickHandler}/>
-            <Image data={image} setLoading={setLoading}/>
-            {loading && <LoadingIcon />}
-        </>
-    )
-}
-
-export default Gallery
+export default Gallery;
